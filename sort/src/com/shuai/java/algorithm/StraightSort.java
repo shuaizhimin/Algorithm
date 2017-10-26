@@ -20,7 +20,8 @@ public class StraightSort {
 
 
     public static void main(String args[]) {
-        straightSort(a);
+       // straightSort(a);
+        insertSort(a);
     }
 
     /**
@@ -48,6 +49,24 @@ public class StraightSort {
                 }
             }
             a[j]=temp;
+        }
+        System.out.println("排序之后:" + Arrays.toString(a)+" length:"+a.length);
+    }
+
+
+    /**
+     * 另种方法
+     * @param a
+     */
+    public static void insertSort(int[] a){
+        System.out.println("排序之前:" + Arrays.toString(a)+" length:"+a.length);
+        for(int i=1;i<a.length;i++){
+            int j;
+            int x=a[i];
+            for(j=i;j>0&&x<a[j-1];j--){
+                a[j]=a[j-1];
+            }
+            a[j]=x;
         }
         System.out.println("排序之后:" + Arrays.toString(a)+" length:"+a.length);
     }
