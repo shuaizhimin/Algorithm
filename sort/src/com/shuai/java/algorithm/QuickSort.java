@@ -27,8 +27,31 @@ public class QuickSort {
      */
     public static void quickSort(int[] a) {
         System.out.println("排序之前:" + Arrays.toString(a) + " length:" + a.length);
+        quickSort(a, 0, a.length - 1);
+        System.out.println("排序之后:" + Arrays.toString(a) + " length:" + a.length);
+    }
 
-        System.out.println("排序之后:" + Arrays.toString(a)+" length:"+a.length);
+    private static void quickSort(int[] a, int low, int high) {
+        if (low < high) { //如果不加这个判断递归会无法退出导致堆栈溢出异常
+            int middle = getMiddle(a, low, high);
+            quickSort(a, 0, middle - 1);
+            quickSort(a, middle + 1, high);
+        }
+    }
+
+
+    private static int getMiddle(int[] a, int low, int high) {
+        int temp = a[low];
+        while (low < high) {
+            while (low < high && a[high] >= temp)
+                high--;
+            a[low] = a[high];
+            while (low < high && a[low] <= temp)
+                low++;
+            a[high] = a[low];
+        }
+        a[low]=temp;
+        return low;
     }
 
 
