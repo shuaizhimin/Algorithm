@@ -1,5 +1,7 @@
 package com.shuai.java.training.leetcode;
 
+import java.util.Arrays;
+
 /**
  * 作者: shuaizhimin
  * 描述:
@@ -13,6 +15,11 @@ package com.shuai.java.training.leetcode;
  * 版本:
  */
 public class First {
+    public static int a[][] = new int[][]{{1, 2, 3}, {5, 6, 7}};
+
+    public static void main(String args[]) {
+        System.out.println(Arrays.deepToString(a));
+    }
 
 
 }
