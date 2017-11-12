@@ -27,7 +27,8 @@ public class QuickSort {
      */
     public static void quickSort(int[] a) {
         System.out.println("排序之前:" + Arrays.toString(a) + " length:" + a.length);
-        quickSort(a, 0, a.length - 1);
+        //quickSort(a, 0, a.length - 1);
+        sort(a, 0, a.length - 1);
         System.out.println("排序之后:" + Arrays.toString(a) + " length:" + a.length);
     }
 
@@ -50,8 +51,41 @@ public class QuickSort {
                 low++;
             a[high] = a[low];
         }
-        a[low]=temp;
+        a[low] = temp;
         return low;
+    }
+
+
+    public static void sort(int a[], int low, int high) {
+        int start = low;
+        int end = high;
+        int tmp = a[low];
+        while (end > start) {
+            while (end > start && a[end] > tmp)
+                end--;
+            //当后面的大于start 交换位置
+            if (a[end] <= tmp) {
+                int temp = a[end];
+                a[end] = a[start];
+                a[start] = temp;
+            }
+
+            while (end > start && a[start] <= tmp)
+                start++;
+            if (a[start] >= tmp) {
+                int temp = a[start];
+                a[start] = a[end];
+                a[end] = temp;
+            }
+        }
+        if (start > low) sort(a, low, start - 1);//左边序列。第一个索引位置到关键值索引-1
+        if (end < high) sort(a, end + 1, high);//右边序列。从关键值索引+1到最后一个
+    }
+
+    public static void change(int a, int b) {
+        int temp = a;
+        a = b;
+        b = temp;
     }
 
 
